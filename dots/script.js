@@ -16,4 +16,4 @@ const functionRecursive = (str, temp = [str[0]]) => {
     return [...withoutDots, ...withDots];
   };
 
-  console.log(functionRecursive("ilovenode"))
+  console.log(functionRecursive("ilovenodejs"))
