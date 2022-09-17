@@ -12,8 +12,10 @@ let list = [
     '4 - Display numbers from largest to smallest \n',
     '5 - Display words in ascending order by the number of letters in a word \n',
     '6 - Show only unique words \n',
+    '7 - Show all uniques values \n',
 ];
 
+let output = 'Please choose the operation: \n' + list.join().replaceAll(',', '') + 'Select value (1-7): ';
 let input;
 let words = [];
 let numbers = [];
@@ -21,13 +23,12 @@ let numbers = [];
 function getUserInput(n) {
     let isEven = (n % 2 == 1);
          
-    rl.question(isEven ?
-        'Please input the sentence: ' :
-        'Please choose the operation: \n' + list.join().replaceAll(',', '') + 'Select value (1-6): ', (answer) => {
+    rl.question(isEven ? 'Please input the sentence: ' : output, (answer) => {
 
             if (answer.toLowerCase() === 'exit') {
-                console.log("Bye!!!")
+                console.log("I will miss you...")
                 rl.close;
+
             } else if (isEven) {
                 readline.cursorTo(process.stdout, 0, 0)
                 readline.clearLine(process.stdout, 0)
@@ -35,8 +36,8 @@ function getUserInput(n) {
                 console.log(`Your input is: ${answer}`)
                 input = answer.trim().split(' ');
                 getUserInput(n + 1);
+
             } else {
-                
                 handler(answer);
                 getUserInput(n + 1);
             }
@@ -82,6 +83,10 @@ function handler(operation) {
 
         case '6':
             sortUNIQ(words);
+            break;
+
+        case '7':
+            sortUNIQ(input);
             break;
 
         default:
